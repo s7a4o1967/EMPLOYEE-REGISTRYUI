@@ -1,0 +1,19 @@
+<app-home></app-home>
+<div class="form">
+    <h1 style="color:#2196F3">Register Employee</h1>
+    <label for="Employee ID">Empolyee ID:</label><br>
+    <input type="text" #empid style="width: 300px; height: 30px"><br>
+    <label for="Employee ID">First Name:</label><br>
+    <input type="text"  #firstname  style="width: 300px; height: 30px"><br>
+    <label for="Employee ID">Last Name:</label><br>
+    <input type="text" #lastname  style="width: 300px; height: 30px"><br>
+    <label for="Employee ID">Email:</label><br>
+    <input type="text" #email required  style="width: 300px; height: 30px"><br>
+    <label for="Employee ID">Gender:</label><br>
+    <input type="text"  #gender  style="width: 300px; height: 30px"><br>
+    <label for="Employee ID">Age:</label><br>
+    <input type="text"  #age  id="age"style="width: 300px; height: 30px"><br><p id="user" #user >{{empId}}</p>
+    
+     <button class="a"  (click)="create(empid.value,firstname.value,lastname.value,email.value,gender.value,age.value)">Register</button>
+
+    </div>

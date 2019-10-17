@@ -1,0 +1,27 @@
+<app-home></app-home>
+
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<div>
+        <form class="example" style="margin-left:550px;margin-top:200px;max-width:500px">
+                        <div class="input-group">
+                                        <input name="search"  #myinp type="text" placeholder="Search"  (keyup)="search_emp(myinp.value)">
+                                       <ul>
+                                               <li *ngFor="let d of data">{{d.empId}}</li>
+                                       </ul>
+                                        </div>
+        <!-- <div>
+               <mat-form-field>
+                       <input type="text" matInput [formControl]="nyControl" [matAutoComplete]="auto">
+               </mat-form-field>
+               <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of items" >{{option.empId}}</mat-option>
+              </mat-autocomplete>
+        </div> -->
+                                       
+                <button type="submit" (click)="search()"><i class="fa fa-search"></i></button>
+        </form>
+</div>

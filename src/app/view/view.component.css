@@ -1,0 +1,36 @@
+.profile{
+    margin:100px;    
+}
+input{
+    margin-top: 10px;
+    margin-left:0px;
+    margin-bottom: 20px;
+    border-radius: 2%;
+    background-color: aliceblue;
+    font-size:15px;
+}
+label{
+    margin-top: 10px;
+    margin-left:0px;
+    margin-bottom: 20px;
+    border-radius: 2%;
+    color:#2196F3;
+    font-size: 22px;
+}
+button{
+    float:left;
+    color:white;
+    background-color:#2196F3;
+    border-color: #2196F3;
+    text-align: center;
+    padding:10px 12px;
+    text-decoration: none;
+    margin-left:50px;
+
+}
+.back{
+    margin-left:60px;
+}
+h1{
+    color: #2196F3;
+}

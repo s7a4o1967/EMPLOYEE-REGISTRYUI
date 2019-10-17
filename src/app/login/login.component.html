@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+</head>
+<body>
+
+<div class="login-form">
+    
+        <h2 class="text-center">LOGIN</h2><br>
+        <div class="form-group">
+                <label for="username">Username:</label>
+            <input type="text"  #username  class="form-control" id="username"  placeholder="Username" required>
+        </div>
+       <br>
+        <div class="form-group">
+                <label for="password">Password:</label>
+            <input type="password" #password class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <button  class="btn btn-primary btn-block"  (click)="login(username.value,password.value)">Log in</button>
+        </div>     
+</div>
+</body>
+</html>                                		                            

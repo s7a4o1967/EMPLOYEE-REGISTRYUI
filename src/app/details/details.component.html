@@ -1,0 +1,32 @@
+<app-home></app-home>
+
+    <h1>Employee Details </h1>
+    <table >
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Age</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of testdata">
+                <td>{{d.empId}}</td>
+                <td>{{d.firstName}}</td>
+                <td>{{d.lastName}}</td>
+                <td>{{d.email}}</td>
+                <td>{{d.gender}}</td>
+                <td>{{d.age}}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+   
+    
+  
+
+ 

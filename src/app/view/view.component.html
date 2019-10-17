@@ -1,0 +1,18 @@
+<app-home>
+</app-home>
+<div class="profile">
+    <h1 class="name">{{view.firstName+" "+view.lastName}}</h1>
+    
+    <label >Employee ID:</label><br>
+    <input name="id" style="width:400px;height:30px;" disabled value="{{view.empId}}"> <br>
+    <label >email:</label><br>
+    <input name="email"  style="width:400px;height:30px;" disabled value="{{view.email}}"> <br>
+    <label >Gender:</label><br>
+    <input name="gender"  style="width:400px;height:30px;" disabled value="{{view.gender}}"> <br>
+    <label >Age:</label><br>
+    <input name="age" style="width:400px;height:30px;"  disabled value="{{view.age}}"> <br><br>
+    <button class="edit"  style="width:120px;height:40px;"(click)="edit()" >Edit</button>
+    <button class="back"  style="width:120px;height:40px;"(click)="back()" >Back</button>
+</div>
+
+        
