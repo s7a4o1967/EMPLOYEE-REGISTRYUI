@@ -9,14 +9,18 @@ import { Router } from '@angular/router';
 })
 export class ViewComponent implements OnInit {
 
-  view:any[];
+  view:any;
   constructor(public http:Http,private router:Router) {
    }
 
   ngOnInit() {
-    this.http.get('http://localhost:8888/view/2').subscribe(res=>{
-      this.view=res.json();
-      localStorage.setItem('emp',JSON.stringify(this.view));
+    console.log('entered view')
+    var enteredString=localStorage.getItem('view');
+
+    this.http.get('http://localhost:8888/view/'+enteredString).subscribe(res=>{
+      this.view=res.json() as Applications;
+      console.log(this.view);
+      localStorage.setItem('viewdetails',JSON.stringify(this.view));
     })
   }
   edit(){
@@ -27,3 +31,14 @@ export class ViewComponent implements OnInit {
   }
 
 }
+interface Applications {
+  empId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  gender: string;
+  age: string;
+  createdBy: string;
+  timeStamp: string;
+  }
+  

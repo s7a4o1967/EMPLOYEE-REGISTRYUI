@@ -35,13 +35,14 @@ export class DetailsComponent implements OnInit {
 
 }
 interface Applications {
-  empId: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  gender: string;
-  age: string;
-  createdBy: string;
-  timeStamp: string;
+empId: string;
+firstName: string;
+lastName: string;
+email: string;
+gender: string;
+age: string;
+createdBy: string;
+timeStamp: string;
 }
+
 

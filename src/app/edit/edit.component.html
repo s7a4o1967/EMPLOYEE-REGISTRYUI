@@ -2,9 +2,9 @@
 </app-home>
 <div class="profile">
 <label >Employee ID:</label><br>
-<input name="id"#empId style="width:400px;height:30px;"  value="{{details.empId}}"> <br>
+<input name="id"#empId style="width:400px;height:30px;"  value={{details.empId}}> <br>
 <label >First Name:</label><br>
-<input name="tfirsname"#firstname style="width:400px;height:30px;"  value="{{details.firstName}}"> <br>
+<input name="firsname"#firstname style="width:400px;height:30px;"  value="{{details.firstName}}"> <br>
 <label >Last Name:</label><br>
 <input name="lastname"#lastname style="width:400px;height:30px;"  value="{{details.lastName}}"> <br>
 <label >email:</label><br>
@@ -13,4 +13,4 @@
 <input name="gender"  #gender style="width:400px;height:30px;"  value="{{details.gender}}"> <br>
 <label >Age:</label><br>
 <input name="age"  #age style="width:400px;height:30px;"  value="{{details.age}}"><br><br>
-<button style="width:120px;height:50px;" (click)="save(empId.value,firstName.value,lastname.value,email.value,gender.value,age.value)">Save</button></div>
+<button style="width:120px;height:50px;" (click)="save(empId.value,firstname.value,lastname.value,email.value,gender.value,age.value)">Save</button></div>

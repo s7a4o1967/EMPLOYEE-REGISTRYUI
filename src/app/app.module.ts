@@ -12,6 +12,12 @@ import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
 import { Routes,RouterModule, RoutesRecognized } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgxPaginationModule } from 'ngx-pagination';
+// import { MatAutocompleteModule,MatInputModule} from '@angular/material';
 const appRoutes: Routes = [ 
   { path: 'login', component: LoginComponent }, 
   { path: 'home', component: HomeComponent },
@@ -39,6 +45,12 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    FormsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    NgxPaginationModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

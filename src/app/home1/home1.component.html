@@ -5,15 +5,15 @@
         <link rel="stylesheet"
                 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<div>
+<div class="container">
         <form class="example" style="margin-left:550px;margin-top:200px;max-width:500px">
-                        <div class="input-group">
+                <!-- <div class="input-group">
                                         <input name="search"  #myinp type="text" placeholder="Search"  (keyup)="search_emp(myinp.value)">
                                        <ul>
-                                               <li *ngFor="let d of data">{{d.empId}}</li>
+                                               <li *ngFor="let d of options">{{d.empId}}</li>
                                        </ul>
-                                        </div>
-        <!-- <div>
+                                        </div> -->
+                <!-- <div>
                <mat-form-field>
                        <input type="text" matInput [formControl]="nyControl" [matAutoComplete]="auto">
                </mat-form-field>
@@ -21,7 +21,42 @@
                 <mat-option *ngFor="let option of items" >{{option.empId}}</mat-option>
               </mat-autocomplete>
         </div> -->
-                                       
-                <button type="submit" (click)="search()"><i class="fa fa-search"></i></button>
+                <div class="matselect">
+                        <!-- <mat-option class="search">
+                                        <input matInput placeholder="Search " type="text" [matAutoComplete]="auto" [formControl]="stateControl">
+                                        <mat-autocomplete #auto="matAutoComplete">
+                                                        <mat-option *ngFor="let item of items" [value]=item.empId>
+                                                                <span>{{item.empId}}</span>
+
+                                                        </mat-option>
+                                        </mat-autocomplete>
+                </mat-option> -->
+                        <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                                <input #myinp matInput  placeholder="Search" [formControl]="stateControl" [matAutocomplete]="auto" style="max-width: 300px;width: 230px;" (keyup.enter)="search(myinp.value)">
+                               
+                                                
+                                <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option *ngFor="let item of options" [value]="item.empId" >
+                                               {{ item.empId }}
+                                        </mat-option>
+                
+                                </mat-autocomplete>
+                        
+                        </mat-form-field>
+                </form>
+                        <!-- <md-input-container>
+                                        <input mdInput placeholder="search" [mdAutocomplete]="auto" [formControl]="stateControl" [(ngModel)]="item.empId">
+                                      </md-input-container>
+                                  
+                                      <md-autocomplete #auto="mdAutocomplete">
+                                        <md-option *ngFor="let item of options | async" [value]="item.empId">
+                                          {{item.empId}}
+                                        </md-option>
+                                      </md-autocomplete> -->
+
+                </div>
+
+                
         </form>
 </div>
