@@ -38,7 +38,7 @@
                                                 
                                 <mat-autocomplete #auto="matAutocomplete">
                                         <mat-option *ngFor="let item of options" [value]="item.empId" >
-                                               {{ item.empId }}
+                                               {{ item.empId }}({{item.firstName}} {{item.lastName}})
                                         </mat-option>
                 
                                 </mat-autocomplete>

@@ -17,6 +17,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatTable, MatTableModule } from '@angular/material';
 // import { MatAutocompleteModule,MatInputModule} from '@angular/material';
 const appRoutes: Routes = [ 
   { path: 'login', component: LoginComponent }, 
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatInputModule,
     NgxPaginationModule,
+    MatTableModule,  
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

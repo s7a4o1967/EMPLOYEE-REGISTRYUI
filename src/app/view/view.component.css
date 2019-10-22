@@ -1,4 +1,4 @@
-.profile{
+/* .profile{
     margin:100px;    
 }
 input{
@@ -14,7 +14,7 @@ label{
     margin-left:0px;
     margin-bottom: 20px;
     border-radius: 2%;
-    color:#2196F3;
+    color:black;
     font-size: 22px;
 }
 button{
@@ -32,5 +32,74 @@ button{
     margin-left:60px;
 }
 h1{
-    color: #2196F3;
+    color: black;
+} */
+	
+.container {
+  margin-left:500px;
+  margin-top:100px;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-element {
+  padding: 5px 0px 25px 2px;
+  width: 100%;
+}
+
+.button {
+  width: 50%;
+  margin-left:100px;
+  padding:10px;
+
+}input{
+color:black;
+}
+.a{
+  float:left;
+  color:white;
+  padding:10px 12px;
+  text-decoration: none;
+  font-size: 18px;
+  margin-left:150px;
+  width:130px;
+
+}
+
+	
+.container {
+    margin-left:500px;
+    margin-top:100px;
+  }
+  
+  .form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .form-element {
+    padding: 5px 0px 25px 2px;
+    width: 100%;
+  }
+  
+  .button {
+    width: 50%;
+    margin-left:100px;
+    padding:10px;
+
+  }
+  .a{
+    float:left;
+    
+    padding:10px 12px;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left:150px;
+    width:130px;
+
 }

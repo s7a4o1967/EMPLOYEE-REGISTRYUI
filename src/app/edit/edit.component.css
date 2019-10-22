@@ -1,4 +1,4 @@
-.profile{
+/* .profile{
     margin:100px;    
 }
 input{
@@ -26,4 +26,39 @@ button{
     padding:10px 12px;
     text-decoration: none;
    margin-left:120px;
+} */
+
+
+	
+.container {
+    margin-left:500px;
+    margin-top:100px;
+  }
+  
+  .form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .form-element {
+    padding: 5px 0px 25px 2px;
+    width: 100%;
+  }
+  
+  .button {
+    width: 50%;
+    margin-left:100px;
+    padding:10px;
+
+  }
+  .a{
+    float:left;
+    
+    padding:10px 12px;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left:150px;
+    width:130px;
+
 }

@@ -1,8 +1,12 @@
 <app-home>
 </app-home>
-<div class="profile">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- <div class="profile">
 <label >Employee ID:</label><br>
-<input name="id"#empId style="width:400px;height:30px;"  value={{details.empId}}> <br>
+<input name="id"#empId style="width:400px;height:30px;"  value={{details.empId}} disabled> <br>
 <label >First Name:</label><br>
 <input name="firsname"#firstname style="width:400px;height:30px;"  value="{{details.firstName}}"> <br>
 <label >Last Name:</label><br>
@@ -13,4 +17,61 @@
 <input name="gender"  #gender style="width:400px;height:30px;"  value="{{details.gender}}"> <br>
 <label >Age:</label><br>
 <input name="age"  #age style="width:400px;height:30px;"  value="{{details.age}}"><br><br>
-<button style="width:120px;height:50px;" (click)="save(empId.value,firstname.value,lastname.value,email.value,gender.value,age.value)">Save</button></div>
+<button style="width:120px;height:50px;" (click)="save(empId.value,firstname.value,lastname.value,email.value,gender.value,age.value)">Save</button></div> -->
+<!-- <mat-form-field floatLabel="never" class="form-element">
+        
+        <input type="text" matInput  placeholder="Employee ID" formControlName="empId">
+        <mat-error *ngIf="formGroup.controls['empId'].invalid">
+            {{getError('empid')}}
+          </mat-error>
+    
+   </mat-form-field> -->
+<div class="container">
+    <form [formGroup]="formGroup" class="form">
+        <mat-form-field floatLabel="never" class="form-element">
+            <label>Employee ID</label>
+            <input #empId type="text" matInput value="{{details.empId}}" disabled>
+
+        </mat-form-field>
+        <mat-form-field floatLabel="never" class="form-element">
+            <label>First Name</label>
+            <input #firstName type="text" matInput value="{{details.firstName}}" formControlName="firstName">
+            <!-- <mat-error *ngIf="formGroup.controls['firstName'].invalid">
+                 {{getError('firstname')}}
+               </mat-error> -->
+        </mat-form-field>
+        <mat-form-field floatLabel="never" class="form-element">
+            <label>Last Name</label>
+            <input #lastName type="text" matInput value={{details.lastName}} formControlName="lastName">
+            <!-- <mat-error *ngIf="formGroup.controls['lastName'].invalid">
+               {{getError('lastname')}}
+             </mat-error> -->
+        </mat-form-field>
+        <mat-form-field floatLabel="never" class="form-element">
+            <label>Email</label>
+            <input #email type="text" matInput value={{details.email}} formControlName="email">
+            <!-- <mat-error *ngIf="formGroup.controls['email'].invalid">
+               {{getError('email')}}
+             </mat-error> -->
+
+        </mat-form-field>
+        <mat-form-field floatLabel="never" class="form-element">
+            <label>Gender</label>
+            <input #gender type="text" matInput value="{{details.gender}}" formControlName="gender">
+            <!-- <mat-error *ngIf="formGroup.controls['gender'].invalid">
+             {{getError('gender')}}
+           </mat-error> -->
+        </mat-form-field>
+        <mat-form-field floatLabel="never" class="form-element">
+            <label>Age</label>
+            <input #age type="text" matInput value="{{details.age}}" formControlName="age">
+            <!-- <mat-error *ngIf="formGroup.controls['age'].invalid">
+           {{getError('age')}}
+         </mat-error> -->
+        </mat-form-field>
+        <div class="form-element">
+            <button mat-raised-button type="submit" class="button" class="btn btn-primary btn-lg a"
+                (click)=save(empId.value,firstName.value,lastName.value,email.value,gender.value,age.value)>Save</button>
+        </div>
+    </form>
+</div>
