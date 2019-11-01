@@ -31,7 +31,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(){
     
     let createdBy = localStorage.getItem('userName');
-    console.log(createdBy);
+    
         this.http.get('http://localhost:8888/details/'+createdBy+'/0')
         .subscribe(res=>{
           this.totalelements = res.json().totalElements
@@ -53,7 +53,6 @@ export class DetailsComponent implements OnInit {
     let createdBy = localStorage.getItem('userName');
     this.http.get('http://localhost:8888/details/'+createdBy+'/'+event)
     .subscribe(res=>{
-      console.log(res);
       this.response=res.json().content as Applications[];
     })
   }

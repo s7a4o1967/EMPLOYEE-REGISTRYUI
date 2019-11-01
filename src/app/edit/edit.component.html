@@ -27,7 +27,7 @@
     
    </mat-form-field> -->
 <div class="container">
-    <form [formGroup]="formGroup" class="form">
+    <form name="editForm" [formGroup]="editForm" class="form" (submit)="save(empId.value,firstName.value,lastName.value,email.value,gender.value,age.value)">
         <mat-form-field floatLabel="never" class="form-element">
             <label>Employee ID</label>
             <input #empId type="text" matInput value="{{details.empId}}" disabled>
@@ -35,43 +35,60 @@
         </mat-form-field>
         <mat-form-field floatLabel="never" class="form-element">
             <label>First Name</label>
-            <input #firstName type="text" matInput value="{{details.firstName}}" formControlName="firstName">
-            <!-- <mat-error *ngIf="formGroup.controls['firstName'].invalid">
+            <input #firstName type="text" matInput value="{{details.firstName}}"   formControlName="firstName">
+            <mat-error *ngIf="!editForm.controls['firstName'].valid ">
                  {{getError('firstname')}}
-               </mat-error> -->
+               </mat-error>
         </mat-form-field>
         <mat-form-field floatLabel="never" class="form-element">
             <label>Last Name</label>
-            <input #lastName type="text" matInput value={{details.lastName}} formControlName="lastName">
-            <!-- <mat-error *ngIf="formGroup.controls['lastName'].invalid">
+            <input #lastName type="text" matInput value={{details.lastName}}  formControlName="lastName">
+            <mat-error *ngIf="editForm.controls['lastName'].invalid">
                {{getError('lastname')}}
-             </mat-error> -->
+             </mat-error>
         </mat-form-field>
         <mat-form-field floatLabel="never" class="form-element">
             <label>Email</label>
             <input #email type="text" matInput value={{details.email}} formControlName="email">
-            <!-- <mat-error *ngIf="formGroup.controls['email'].invalid">
+            <mat-error *ngIf="editForm.controls['email'].invalid">
                {{getError('email')}}
-             </mat-error> -->
+             </mat-error>
 
         </mat-form-field>
-        <mat-form-field floatLabel="never" class="form-element">
+        <!-- <mat-form-field floatLabel="never" class="form-element">
             <label>Gender</label>
             <input #gender type="text" matInput value="{{details.gender}}" formControlName="gender">
-            <!-- <mat-error *ngIf="formGroup.controls['gender'].invalid">
+            <mat-error *ngIf="editForm.controls['gender'].invalid">
              {{getError('gender')}}
-           </mat-error> -->
+           </mat-error>
+        </mat-form-field> -->
+        <mat-form-field class="form-element"  >
+            <label>Gender</label>
+            <mat-select #gender value="{{details.gender}}" formControlName="gender" >
+              <mat-option value="M">M</mat-option>
+              <mat-option value="F">F</mat-option>
+             
+            </mat-select>
+  
         </mat-form-field>
+        <!-- <mat-form-field class="form-element" class="form-element" >
+                <mat-label>Gender</mat-label>
+                <mat-select #gender value="{{details.gender}}" formControlName="gender" >
+                  <mat-option value="M">M</mat-option>
+                  <mat-option value="F">F</mat-option>
+                 
+                </mat-select>
+        </mat-form-field> -->
+      
         <mat-form-field floatLabel="never" class="form-element">
             <label>Age</label>
             <input #age type="text" matInput value="{{details.age}}" formControlName="age">
-            <!-- <mat-error *ngIf="formGroup.controls['age'].invalid">
+            <mat-error *ngIf="editForm.controls['age'].invalid">
            {{getError('age')}}
-         </mat-error> -->
+         </mat-error>
         </mat-form-field>
         <div class="form-element">
-            <button mat-raised-button type="submit" class="button" class="btn btn-primary btn-lg a"
-                (click)=save(empId.value,firstName.value,lastName.value,email.value,gender.value,age.value)>Save</button>
+            <button  mat-raised-button style="background-color:#ff6700;background-color: #ff6700; color: white;" (click)="openDialog(key)" type="submit" class="button"[disabled]="editForm.invalid" class="btn btn-primary btn-lg a">Save</button>
         </div>
     </form>
 </div>

@@ -93,6 +93,10 @@ color:black;
     padding:10px;
 
   }
+  label{
+    font-size: 20px;
+    margin-bottom: 17px;
+  }
   .a{
     float:left;
     

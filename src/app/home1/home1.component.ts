@@ -16,7 +16,7 @@ export class Home1Component implements OnInit {
   stateControl : FormControl = new FormControl();
   items:any[];
   options:any[];
-  filteredOptions:Observable<Applications[]>;
+  //filteredOptions:Observable<Applications[]>;
   constructor(private router: Router,private http :Http) {
     this.router = router;
     this.http=http;
@@ -28,7 +28,6 @@ export class Home1Component implements OnInit {
   valueChange(){
     this.stateControl.valueChanges
     .subscribe(data=>{
-      console.log(data)
       if(data!==''){
         this.getdata(data);
       }
@@ -44,17 +43,12 @@ export class Home1Component implements OnInit {
   //   })
   // }
  getdata(value:string){
-    console.log('api call')
     this.http.get('http://localhost:8888/search/'+value).subscribe(res=>{
-      console.log(res)
           this.options=res.json() as Applications[];
-          console.log(this.options)
     })
  }
  search(empinp){
-   console.log('search',empinp)
    if(empinp){
-     console.log(empinp)
     localStorage.setItem('view',empinp);
    }
     this.router.navigate(['view']);

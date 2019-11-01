@@ -1,9 +1,19 @@
-<div class="navigation">
-    <a (click)="home()" class="list"  >Home</a>
-    <a (click)="create()" class="list">Create</a>
-    <a  class="list">View</a>
-    <a  class="list" >Edit</a>
-    <a (click)="details()" class="list" >Details</a>
-    <a (click)="logout()" class="logout list">Logout</a>
-</div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<div class="navigation">
+    <a (click)="home()" class="list float-left"  >Home</a>
+    <a (click)="create()" class="list float-left">Create</a>
+    <a  class="list float-left">View</a>
+    <a  class="list float-left" >Edit</a>
+    <a (click)="details()" class="list float-left" >Details</a>
+    <div class="logout list ">
+           <a  [matMenuTriggerFor]="menu" style="color:white ; font-family: cursive; "><span> Welcome {{user}}</span> <mat-icon class="logout right-icon">account_circle</mat-icon></a>
+           <mat-menu #menu="matMenu" yPosition="below" >
+            <button mat-menu-item (click)=view()>View Profile</button>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+        </div>
+     
+
+</div>
+<!-- <button><mat-icon class="logout right-icon">account_circle</mat-icon></button> -->

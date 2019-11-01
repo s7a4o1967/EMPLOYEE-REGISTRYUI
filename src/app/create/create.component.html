@@ -1,60 +1,78 @@
-
-
-
 <app-home></app-home>
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-   <div class="container">
-     <h1>Register</h1>
-     <form [formGroup]="formGroup" (ngSubmit)=create(formGroup.value) class="form">
-        <mat-form-field floatLabel="never" class="form-element">
-        
-            <input type="text" matInput  placeholder="Employee ID" formControlName="empId">
-            <mat-error *ngIf="formGroup.controls['empId'].invalid">
-                {{getError('empid')}}
-              </mat-error>
-       </mat-form-field>
-       <mat-form-field floatLabel="never" class="form-element">
-          <input type="text" matInput  placeholder="First Name" formControlName="firstName">
-          <mat-error *ngIf="formGroup.controls['firstName'].invalid">
-              {{getError('firstname')}}
-            </mat-error>
-     </mat-form-field>
-     <mat-form-field floatLabel="never" class="form-element">
-        <input type="text" matInput  placeholder="Last Name" formControlName="lastName">
-        <mat-error *ngIf="formGroup.controls['lastName'].invalid">
-            {{getError('lastname')}}
-          </mat-error>
-   </mat-form-field>
-     <mat-form-field floatLabel="never" class="form-element">
-        <input type="text" matInput  placeholder="Mail ID" formControlName="email">
-        <mat-error *ngIf="formGroup.controls['email'].invalid">
-            {{getError('email')}}
-          </mat-error>
-          
-   </mat-form-field>
-   <mat-form-field floatLabel="never" class="form-element">
-      <input type="text" matInput  placeholder="Gender" formControlName="gender">
-      <mat-error *ngIf="formGroup.controls['gender'].invalid">
-          {{getError('gender')}}
+  <div class="container">
+    <h1>Register</h1>
+    <form [formGroup]="formGroup" (ngSubmit)=create(formGroup.value) class="form">
+      <mat-form-field floatLabel="never" class="form-element">
+
+        <input type="text" matInput placeholder="Employee ID" formControlName="empId">
+        <mat-error *ngIf="formGroup.controls['empId'].invalid">
+          {{getError('empid')}}
         </mat-error>
- </mat-form-field>
- <mat-form-field floatLabel="never" class="form-element">
-    <input type="text" matInput  placeholder="Age" formControlName="age">
-    <mat-error *ngIf="formGroup.controls['age'].invalid">
-        {{getError('age')}}
-      </mat-error>
-</mat-form-field>
-<div class="form-element">
-    <button  mat-raised-button type="submit" class="button" class="btn btn-primary btn-lg a" [disabled]="!formGroup.valid">Register</button>
-</div>
-     </form>
-   </div>
+      </mat-form-field>
+      <mat-form-field floatLabel="never" class="form-element">
+        <input type="text" matInput placeholder="First Name" formControlName="firstName">
+        <mat-error *ngIf="formGroup.controls['firstName'].invalid">
+          {{getError('firstname')}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field floatLabel="never" class="form-element">
+        <input type="text" matInput placeholder="Last Name" formControlName="lastName">
+        <mat-error *ngIf="formGroup.controls['lastName'].invalid">
+          {{getError('lastname')}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field floatLabel="never" class="form-element">
+        <input type="email" matInput email="true" placeholder="Mail ID" formControlName="email">
+
+        <mat-error *ngIf="formGroup.controls['email'].invalid">
+          {{getError('email')}}
+        </mat-error>
+
+      </mat-form-field>
+      <!-- <mat-form-field floatLabel="never" class="form-element">
+     
+     
+      <input  matInput  [matAutocomplete]="auto" [formControl]="formcontrol" style="max-width: 300px;width: 230px;">
+                               
+                                                
+                                <mat-autocomplete #auto="matAutocomplete">
+                                        <mat-option  >
+                                               M
+                                        </mat-option>
+                                        <mat-option  >
+                                            F
+                                     </mat-option>
+                                </mat-autocomplete>
+ </mat-form-field> -->
+      <mat-form-field class="form-element" class="form-element" >
+          <mat-label>Gender</mat-label>
+          <mat-select #gender value="select"  >
+            <mat-option value="M">M</mat-option>
+            <mat-option value="F">F</mat-option>
+           
+          </mat-select>
+
+      </mat-form-field>
+      <mat-form-field floatLabel="never" class="form-element">
+        <input type="text" matInput placeholder="Age" formControlName="age">
+        <mat-error *ngIf="formGroup.controls['age'].invalid">
+          {{getError('age')}}
+        </mat-error>
+      </mat-form-field>
+      <div class="form-element">
+        <button mat-raised-button style="background-color:#ff6700;background-color: #ff6700; color: white;" type="submit" class="button" class="btn btn-primary btn-lg a" [disabled]="formGroup.invalid">Register</button>
+        <simple-notifications></simple-notifications>
+      </div>
+    </form>
+  </div>
 </body>

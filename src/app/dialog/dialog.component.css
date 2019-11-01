@@ -1,0 +1,17 @@
+button{
+   margin-left:420px;
+   margin-top:17px;
+}
+.dialogbody{
+    padding:0px;
+    background-color: white
+     !important;
+}
+/* .mat-dialog-container {
+    background: #f5f5f5 !important;
+    box-shadow: none !important;
+} */
+/* mat-dialog-container#mat-dialog-0 {
+    background-color: #f5f5f5 !important;
+    box-shadow: none;
+} */

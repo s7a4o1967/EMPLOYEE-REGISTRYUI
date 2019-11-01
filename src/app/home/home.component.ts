@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+user:any;
   constructor(private router:Router) { }
 
   ngOnInit() {
+   this.user=localStorage.getItem('userName');
   }
   create(){
     this.router.navigate(['create']);
@@ -21,6 +22,12 @@ export class HomeComponent implements OnInit {
   details(){
     this.router.navigate(['details']);
    // this._details.employeedetails();
+  }
+  view()
+  {
+    let createdBy=localStorage.getItem('userName');
+    localStorage.setItem('view',createdBy);
+    this.router.navigate(['view']);
   }
   logout(){
     this.router.navigate(['login']);

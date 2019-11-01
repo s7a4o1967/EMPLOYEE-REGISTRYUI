@@ -17,7 +17,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgxPaginationModule } from 'ngx-pagination';
-import { MatTable, MatTableModule } from '@angular/material';
+import {  MatTableModule, MatSelectModule, MatIconModule, MatButtonModule,MatDialogModule, MatMenuModule } from '@angular/material';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { DialogComponent } from './dialog/dialog.component';
 // import { MatAutocompleteModule,MatInputModule} from '@angular/material';
 const appRoutes: Routes = [ 
   { path: 'login', component: LoginComponent }, 
@@ -40,8 +42,9 @@ const appRoutes: Routes = [
     DetailsComponent,
     EditComponent,
     ViewComponent,
-    
+    DialogComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,6 +56,12 @@ const appRoutes: Routes = [
     MatInputModule,
     NgxPaginationModule,
     MatTableModule,  
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatMenuModule,
+    SimpleNotificationsModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

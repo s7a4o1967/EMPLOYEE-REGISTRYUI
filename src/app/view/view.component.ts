@@ -18,7 +18,7 @@ export class ViewComponent implements OnInit {
     var enteredString=localStorage.getItem('view');
     this.http.get('http://localhost:8888/view/'+enteredString).subscribe(res=>{
       this.view=res.json() as Applications;
-      console.log(this.view);
+      //console.log(this.view);
       localStorage.setItem('viewdetails',JSON.stringify(this.view));
     })
   }

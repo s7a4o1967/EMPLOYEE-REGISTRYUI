@@ -1,27 +1,47 @@
 .navigation{
-    background-color:#e9e9e9;
+    background-color:#ff6700;
     overflow: hidden;
 }
-.list{
+.float-left{
     float:left;
-    color:black;
+}
+.list a span:hover{
+    background-color:white;
+    color:#ff6700; 
+    
+}
+.list{
+    color:white;
     text-align: center;
-    padding:14px 16px;
+    padding:20px 27px;
     text-decoration: none;
     font-size: 17px;
+    font-family: cursive;
 }
 .navigation a:hover{
-    background-color:#2196F3;
-    color:white; 
+    background-color:white;
+    color:#ff6700; 
 }
- .searchbar{ 
-    margin-top:200px;
-    margin-left: 450px;
-   } 
-   .logout{
+   .logout
+   {
     float:right;
+    font-size: 17px;
+    color:white;        
+   text-align: center;
    }
- 
-  
+   .right{
+    padding:20px 27px;
+   }
+   .right-icon{
+    padding:5px 0px;
+   }
+   a:hover{
+       background-color:white;
+    color:#ff6700; 
+   }
+   /* .list a span{
+       padding:22px;
+   } */
+
  
    
