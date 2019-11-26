@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <h1>Register</h1>
-    <form [formGroup]="formGroup" (ngSubmit)=create(formGroup.value) class="form">
+    <form [formGroup]="formGroup" (ngSubmit)=onSubmit(formGroup.value) class="form">
       <mat-form-field floatLabel="never" class="form-element">
 
         <input type="text" matInput placeholder="Employee ID" formControlName="empId">

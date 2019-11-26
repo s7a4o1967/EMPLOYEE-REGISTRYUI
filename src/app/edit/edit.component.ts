@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Http ,Headers} from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material';
+import { EditService } from '../services/edit.service';
 
 @Component({
   selector: 'app-edit',
@@ -12,9 +13,16 @@ import { MatDialog } from '@angular/material';
 })
 export class EditComponent implements OnInit {
   editForm: FormGroup;
-  details:Applications;
- 
-  constructor(private http:Http,private router:Router,private formbuilder:FormBuilder,public dialog: MatDialog){ }
+  details: Applications;
+  // private edit_service: EditService;
+  // private router: Router;
+  // private formbuilder: FormBuilder;
+  // public dialog: MatDialog
+
+  constructor(  private edit_service: EditService,
+    private router: Router,
+    private formbuilder: FormBuilder,
+    public dialog: MatDialog) { }
   openDialog(key) {
     let dialogRef = this.dialog.open(DialogComponent,
       {
@@ -24,60 +32,69 @@ export class EditComponent implements OnInit {
       });
   }
   ngOnInit() {
-    this.details=JSON.parse(localStorage.getItem('viewdetails')) as Applications;
-    
-      this.createForm();
+    this.details = JSON.parse(localStorage.getItem('viewdetails')) as Applications;
+    this.createForm();
   }
-  save(empId,firstName,lastName,email,gender,age){
-      // if(email === null || email === ''){
-      //   this.editForm.controls['email'].setErrors({'email': true});
-      // } else{
-      //   this.editForm.controls['email'].setErrors(null);
-      // }
+  save(empId, firstName, lastName, email, gender, age) {
+
+    this.edit_service.save(empId, firstName, lastName, email, gender, age).subscribe(res => {
+      console.log(res);
+      // let dialogRef = this.dialog.open(DialogComponent);
+      // console.log(dialogRef);
+      this.router.navigate(['home1']);
+    },
+      error => {
+        alert('Error')
+      })
+
+
+    // if(email === null || email === ''){
+    //   this.editForm.controls['email'].setErrors({'email': true});
+    // } else{
+    //   this.editForm.controls['email'].setErrors(null);
+    // }
     // let empId=this.details.empId;
     // let firstName=value.firstName;
     // let lastName=value.lastName;
     // let email=value.email;
     // let gender=value.gender;
     // let age=value.age;
-    
-    let edited_data=JSON.stringify(({empId,firstName,lastName,email,gender,age}));
-      // console.log(edited_data);
-      let header=new Headers({'Content-Type': 'application/json'});
-      header.append('access-control-allow-origin','*');
-      this.http.post('http://localhost:8888/edit',edited_data,{ headers:header}).subscribe(
-          res=>{
-            // let dialogRef = this.dialog.open(DialogComponent);
-            // alert('Employee Data updated succesfully');
-            this.router.navigate(['home1']);
-          },
-          error=>{
-              alert('Error');
-          }
-      )
 
+    // let edited_data = JSON.stringify({ empId, firstName, lastName, email, gender, age });
+    // // console.log(edited_data);
+    // let header = new Headers({ 'Content-Type': 'application/json' });
+    // header.append('access-control-allow-origin', '*');
+    // this.http.post('http://localhost:8888/edit', edited_data, { headers: header }).subscribe(
+    //   res => {
+    //     // let dialogRef = this.dialog.open(DialogComponent);
+    //     // alert('Employee Data updated succesfully');
+    //     this.router.navigate(['home1']);
+    //   },
+    //   error => {
+    //     alert('Error');
+    //   }
+    // )
   }
-  createForm(){
+  createForm() {
     this.editForm = this.formbuilder.group({
-  
       'firstName': [this.details.firstName, Validators.required],
-     'lastName': [this.details.lastName, Validators.required],
+      'lastName': [this.details.lastName, Validators.required],
       'email': [this.details.email, Validators.compose([Validators.required, Validators.email])],
       'gender': [this.details.gender, Validators.required],
       'age': [this.details.age, Validators.compose([Validators.required, Validators.maxLength(2)])]
     });
   }
 
-  
-getError(el) {
+
+  getError(el) {
     switch (el) {
       case 'firstname':
-        if (this.editForm.get('firstName').hasError('required')  ) {
+        if (this.editForm.get('firstName').hasError('required')) {
           return 'required';
         }
         break;
       case 'lastname':
-        if (this.editForm.get('lastName').hasError('required')) {   
+        if (this.editForm.get('lastName').hasError('required')) {
           return 'required';
         }
         break;
@@ -85,7 +102,7 @@ getError(el) {
         if (this.editForm.get('email').hasError('required')) {
           return 'required';
         }
-        if(this.editForm.get('email').hasError('email')){
+        if (this.editForm.get('email').hasError('email')) {
           return 'Invalid Email'
         }
         break;
@@ -98,7 +115,7 @@ getError(el) {
         if (this.editForm.get('age').hasError('required')) {
           return 'required';
         }
-        if(this.editForm.get('age').hasError('maxlength')){
+        if (this.editForm.get('age').hasError('maxlength')) {
           return 'Enter valid number';
         }
         break;
@@ -118,5 +135,4 @@ interface Applications {
   age: string;
   createdBy: string;
   timeStamp: string;
-  }
-  
+}

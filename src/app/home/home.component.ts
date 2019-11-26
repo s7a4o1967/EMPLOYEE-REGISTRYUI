@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 user:any;
+createdBy:any;
+// router:Router;
   constructor(private router:Router) { }
 
   ngOnInit() {
@@ -25,8 +27,8 @@ user:any;
   }
   view()
   {
-    let createdBy=localStorage.getItem('userName');
-    localStorage.setItem('view',createdBy);
+    this.createdBy=localStorage.getItem('userName');
+    localStorage.setItem('view',this.createdBy);
     this.router.navigate(['view']);
   }
   logout(){

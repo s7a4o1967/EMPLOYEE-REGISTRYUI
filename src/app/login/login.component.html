@@ -28,10 +28,10 @@
 </div> -->
 
 <div class="container"> 
-        <form [formGroup]="formGroup" (ngSubmit)="login(formGroup.value)" class="form">
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
             <label>UserName:</label>
           <mat-form-field floatLabel="never" class="form-element">
-            <input type="text" matInput  placeholder="Username" formControlName="username">
+            <input type="text" #username matInput  placeholder="Username" formControlName="username">
             <mat-error *ngIf="formGroup.controls['username'].invalid">
               {{getError('user')}}
             </mat-error>
@@ -40,7 +40,7 @@
           Password:
       </label>
           <mat-form-field floatLabel="never" class="form-element">
-            <input type="password" matInput placeholder="Password" formControlName="password">
+            <input type="password" #password matInput placeholder="Password" formControlName="password">
             <mat-error *ngIf="!formGroup.controls['password'].valid">
               {{getError('pass')}}
             </mat-error>

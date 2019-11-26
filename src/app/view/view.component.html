@@ -20,26 +20,27 @@
 
 
 <div class="container">
-    <form  class="form" >
+    <form class="form">
         <h2>{{view.firstName}} {{view.lastName}}</h2>
         <mat-form-field class="form-element">
             <label>Employee ID</label>
-            <input matInput value="{{view.empId}}" disabled> 
+            <input matInput value="{{view.empId}}" disabled>
         </mat-form-field>
         <mat-form-field class="form-element">
             <label>Email</label>
-                <input matInput value="{{view.email}}" disabled> 
-            </mat-form-field>
-            <mat-form-field class="form-element">
-                <label>Gender</label>
-                    <input matInput value="{{view.gender}}" disabled> 
-                </mat-form-field>
-                <mat-form-field class="form-element">
-                    <label>Age</label>
-                        <input matInput value="{{view.age}}" disabled> 
-                    </mat-form-field>
-                    <div class="form-element">
-                            <button style="background-color:#ff6700;background-color: #ff6700; color: white;" mat-raised-button type="submit"(click)="viewpage()" class="button" class="btn btn-primary btn-lg a" >Edit</button>
-                        </div>              
+            <input matInput value="{{view.email}}" disabled>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+            <label>Gender</label>
+            <input matInput value="{{view.gender}}" disabled>
+        </mat-form-field>
+        <mat-form-field class="form-element">
+            <label>Age</label>
+            <input matInput value="{{view.age}}" disabled>
+        </mat-form-field>
+        <div class="form-element">
+            <button style="background-color:#ff6700;background-color: #ff6700; color: white;" mat-raised-button
+                type="submit" (click)="viewpage()" class="button" class="btn btn-primary btn-lg a">Edit</button>
+        </div>
     </form>
 </div>

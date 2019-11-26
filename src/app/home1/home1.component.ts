@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import { FormControl}  from '@angular/forms';
 import{ MatAutocompleteModule} from '@angular/material';
 import { Observable } from 'rxjs';
+import { Home1Service } from '../services/home1.service';
 // import {map, startWith, debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 // import { getTreeNoValidDataSourceError } from '@angular/cdk/tree';
 // import { ThrowStmt } from '@angular/compiler';
@@ -16,10 +17,11 @@ export class Home1Component implements OnInit {
   stateControl : FormControl = new FormControl();
   items:any[];
   options:any[];
+  // private router: Router;
+  // private home1_service:Home1Service
   //filteredOptions:Observable<Applications[]>;
-  constructor(private router: Router,private http :Http) {
-    this.router = router;
-    this.http=http;
+  constructor( private router: Router,
+    private home1_service:Home1Service) {
   }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class Home1Component implements OnInit {
     this.stateControl.valueChanges
     .subscribe(data=>{
       if(data!==''){
-        this.getdata(data);
+          this.getdata(data)
       }
     })
   }
@@ -42,11 +44,17 @@ export class Home1Component implements OnInit {
   //       })
   //   })
   // }
- getdata(value:string){
-    this.http.get('http://localhost:8888/search/'+value).subscribe(res=>{
-          this.options=res.json() as Applications[];
-    })
- }
+//  getdata(value:string){
+//     this.http.get('http://localhost:8888/search/'+value).subscribe(res=>{
+//           this.options=res.json() as Applications[];
+//     })
+//  }
+getdata(value:string){
+  this.home1_service.getResponse(value).subscribe(res=>{
+    this.options=res.json() as Applications[];
+  })
+}
+
  search(empinp){
    if(empinp){
     localStorage.setItem('view',empinp);
@@ -56,9 +64,7 @@ export class Home1Component implements OnInit {
   // search_emp(value){
     //    var data=this.items.filter(item=>{
     //         return item.empId.toLowerCase().includes(value);
-    //     })
-       
-      
+    //     }) 
     //   var data=this.items.filter(item=>{
     //     return item.firstName.toLowerCase().includes(value);
     // })
@@ -73,10 +79,6 @@ export class Home1Component implements OnInit {
   //       return item.lastName;
   //     }
   //   })
-   
-   
-    
-    
   // }
 }
 interface Applications {

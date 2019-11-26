@@ -1,20 +1,22 @@
-import { Component,Inject } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import {MatDialog,MatDialogConfig} from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { NotificationsService } from 'angular2-notifications';
-
-
+import { CreateService } from '../services/create.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent { 
+export class CreateComponent {
   formGroup: FormGroup;
-  constructor(private http: Http, private router: Router, private formbuilder: FormBuilder,public dialog: MatDialog, private _notificationservice: NotificationsService) {
+  
+  
+  
+  constructor(private   _notificationservice:NotificationsService
+,private service:CreateService,private dialog:MatDialog,private formbuilder:FormBuilder
+   //private router: Router,
+  ) {
 
   }
   // types = ['alert', 'error', 'info', 'warn', 'success'];
@@ -23,18 +25,17 @@ export class CreateComponent {
   ngOnInit() {
     this.createForm();
   }
-
   createForm() {
-    
     this.formGroup = this.formbuilder.group({
       'empId': ['', Validators.required],
       'firstName': ['', Validators.required],
       'lastName': ['', Validators.required],
-      'email': ['',Validators.compose([Validators.required, Validators.email])],
-     // 'gender': ['', Validators.required],
+      'email': ['', Validators.compose([Validators.required, Validators.email])],
+      // 'gender': ['', Validators.required],
       'age': ['', Validators.compose([Validators.required, Validators.maxLength(2)])]
     });
   }
+  
   getError(el) {
     switch (el) {
       case 'empid':
@@ -56,7 +57,7 @@ export class CreateComponent {
         if (this.formGroup.get('email').hasError('required')) {
           return 'required';
         }
-        if(this.formGroup.get('email').hasError('email')){
+        if (this.formGroup.get('email').hasError('email')) {
           return 'Invalid Email';
         }
         break;
@@ -69,8 +70,8 @@ export class CreateComponent {
         if (this.formGroup.get('age').hasError('required')) {
           return 'required';
         }
-        if (this.formGroup.get('age').hasError('maxlength')){
-            return 'Enter valid number';
+        if (this.formGroup.get('age').hasError('maxlength')) {
+          return 'Enter valid number';
         }
         break;
 
@@ -78,49 +79,81 @@ export class CreateComponent {
         return '';
     }
   }
-  create(value) {
-    let empId = value.empId;
-    let firstName = value.firstName;
-    let lastName = value.lastName;
-    let email = value.email;
-    let gender = value.gender;
-    let age = value.age;
-    let createdTime = new Date();
-    let createdBy = localStorage.getItem('userName');
-
-    let body = JSON.stringify({ empId, firstName, lastName, email, gender, age, createdBy, createdTime });
-    let header = new Headers({ 'Content-Type': 'application/json' });
-    header.append('access-control-allow-origin', '*');
-    this.http.post('http://localhost:8888/register', body, { headers: header })
-      .subscribe(res => {
-        if (res.status === 200) {
-          this._notificationservice.success('User registered successfully','', {
+  onSubmit(value) {
+    this.service.create(value).subscribe(res => {
+      if (res.status === 200) {
+        this._notificationservice.success('User registered successfully', '', {
+          position: ["bottom", "left"],
+          timeOut: 1000,
+          clickToClose: true,
+          animate: 'fromRight'
+        });
+      }
+    },
+      err => {
+        if (err.status === 409) {
+          this._notificationservice.error('User already exists', '', {
             position: ["bottom", "left"],
             timeOut: 1000,
             clickToClose: true,
             animate: 'fromRight'
           });
-         
+
         }
-      },
-        err => {
-          if (err.status === 409) {
-            this._notificationservice.error('User already exists','', {
-              position: ["bottom", "left"],
-              timeOut: 1000,
-              clickToClose: true,
-              animate: 'fromRight'
-            });
-           
-          }
-        })
+      })
   }
- 
-  
-  }
-  
+
+  // create(value) {
+  //   let empId = value.empId;
+  //   let firstName = value.firstName;
+  //   let lastName = value.lastName;
+  //   let email = value.email;
+  //   let gender = value.gender;
+  //   let age = value.age;
+  //   let createdTime = new Date();
+  //   let createdBy = localStorage.getItem('userName');
+
+  //   let body = JSON.stringify({ empId, firstName, lastName, email, gender, age, createdBy, createdTime });
+  //   let header = new Headers({ 'Content-Type': 'application/json' });
+  //   header.append('access-control-allow-origin', '*');
+  //   this.http.post('http://localhost:8888/register', body, { headers: header })
+  //     .subscribe(res => {
+  //       if (res.status === 200) {
+  //         this._notificationservice.success('User registered successfully','', {
+  //           position: ["bottom", "left"],
+  //           timeOut: 1000,
+  //           clickToClose: true,
+  //           animate: 'fromRight'
+  //         });
+
+  //       }
+  //     },
+  //       err => {
+  //         if (err.status === 409) {
+  //           this._notificationservice.error('User already exists','', {
+  //             position: ["bottom", "left"],
+  //             timeOut: 1000,
+  //             clickToClose: true,
+  //             animate: 'fromRight'
+  //           });
+
+  //         }
+  //       })+
+  // }
 
 
+}
+
+
+
+interface Applications {
+  empId: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  gender: string,
+  age: string,
+}
 
 
 
@@ -163,4 +196,4 @@ export class CreateComponent {
     //    }
     //  })
  // }
- 
+
