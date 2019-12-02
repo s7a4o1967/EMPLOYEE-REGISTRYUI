@@ -15,15 +15,19 @@ export class LoginComponent {
   ngOnInit() {
     this.createForm();
   }
-  onSubmit() {
+  onSubmit():boolean {
     this.login_service.login(this.f.username.value, this.f.password.value)
       .subscribe(
         data => {
+
           this.router.navigate(['home1']);
+          
         },
         error => {
-          alert('Invalid Username or Password')
+          alert('Invalid Username or Password');
+          return false;
         });
+        return true 
   }
   // login(value){
   //  let empId=value.username;

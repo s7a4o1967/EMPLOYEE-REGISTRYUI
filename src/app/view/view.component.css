@@ -33,30 +33,26 @@ button{
 }
 h1{
     color: black;
-} */
-	
+} */	
 .container {
   margin-left:500px;
   margin-top:100px;
 }
-
 .form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
 }
-
 .form-element {
   padding: 5px 0px 25px 2px;
   width: 100%;
 }
-
 .button {
   width: 50%;
   margin-left:100px;
   padding:10px;
-
-}input{
+}
+input{
 color:black;
 }
 .a{
@@ -69,8 +65,6 @@ color:black;
   width:130px;
 
 }
-
-	
 .container {
     margin-left:300px;
     margin-top:100px;
@@ -81,25 +75,21 @@ color:black;
     max-width: 400px;
     width: 100%;
   }
-  
   .form-element {
     padding: 5px 0px 25px 2px;
     width: 100%;
   }
-  
   .button {
     width: 50%;
     margin-left:100px;
     padding:10px;
-
   }
   label{
     font-size: 20px;
     margin-bottom: 17px;
   }
   .a{
-    float:left;
-    
+    float:left; 
     padding:10px 12px;
     text-decoration: none;
     font-size: 18px;

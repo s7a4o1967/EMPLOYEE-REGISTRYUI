@@ -27,6 +27,7 @@ createdBy:any;
   }
   view()
   {
+    
     this.createdBy=localStorage.getItem('userName');
     localStorage.setItem('view',this.createdBy);
     this.router.navigate(['view']);

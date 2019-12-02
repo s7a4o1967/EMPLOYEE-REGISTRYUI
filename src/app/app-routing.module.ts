@@ -9,7 +9,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { AuthGuard } from './guards/auth.guard';
 
-
+export const AUTH_PROVIDERS = [AuthGuard];
 const routes: Routes = [
   {
     path:'',
@@ -20,8 +20,9 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:'home',
-    component:HomeComponent
+    path:'home',  
+    component:HomeComponent,
+   // canActivate:[AuthGuard]
   },
   {
     path:'create',
@@ -34,7 +35,7 @@ const routes: Routes = [
   {
     path:'home1',
     component:Home1Component,
-    canActivate:[AuthGuard]
+    //canActivate:[AuthGuard]
   },
   {
     path:'details',

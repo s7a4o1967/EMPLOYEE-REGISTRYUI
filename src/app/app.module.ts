@@ -21,7 +21,6 @@ import { MatTableModule, MatSelectModule, MatIconModule, MatButtonModule, MatDia
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { DialogComponent } from './dialog/dialog.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 // import { MatAutocompleteModule,MatInputModule} from '@angular/material';
 const appRoutes: Routes = [
@@ -48,7 +47,7 @@ const appRoutes: Routes = [
     DialogComponent,
 
   ],
- // schemas:[NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
+  // schemas:[NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [DialogComponent],
   imports: [
 
@@ -71,8 +70,12 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
