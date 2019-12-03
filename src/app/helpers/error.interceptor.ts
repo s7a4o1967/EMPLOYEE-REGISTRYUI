@@ -9,22 +9,33 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: LoginService,private home:HomeComponent,private router:Router) { }
+    constructor(private authenticationService:HomeComponent,private home:HomeComponent,private router:Router) { }
     headers = new Headers({
         'Content-Type': 'application/json',
         'Token': localStorage.getItem("token")
     });
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log("intercepted request ... ");
-        const authReq = request.clone({ headers: request.headers.set("Token", localStorage.getItem("token")) });
-        console.log("Sending request with new header now ...");
+        // console.log("intercepted request ... ");
+        // const authReq = request.clone({ headers: request.headers.set("Token", localStorage.getItem("token")) });
+        // console.log("Sending request with new header now ...");
 
+        // return next.handle(request).pipe(catchError(err => {
+        //     console.log(err);
+        //     if (err.status === 401) {
+        //         this.home.logout();
+        //         location.reload(true);
+        //     }
+        //     const error = err.error.message || err.statusText;
+        //     return throwError(error);
+        // }))
+        console.log('Error Interceptor');
         return next.handle(request).pipe(catchError(err => {
-            console.log(err);
             if (err.status === 401) {
-                this.home.logout();
+                // auto logout if 401 response returned from api
+                this.authenticationService.logout();
                 location.reload(true);
             }
+
             const error = err.error.message || err.statusText;
             return throwError(error);
         }))

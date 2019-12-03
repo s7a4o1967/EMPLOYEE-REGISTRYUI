@@ -10,7 +10,7 @@ import { CreateComponent } from './create/create.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { ViewComponent } from './view/view.component';
-import { Routes, RouterModule, RoutesRecognized } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -22,6 +22,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import { DialogComponent } from './dialog/dialog.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
 // import { MatAutocompleteModule,MatInputModule} from '@angular/material';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -70,7 +71,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

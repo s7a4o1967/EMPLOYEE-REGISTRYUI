@@ -14,6 +14,7 @@ export class ViewService {
 
     return this.http.get('http://localhost:8888/view/' + enteredString).
     pipe(map(res=>{
+  
       return res;
     }))
   }

@@ -26,24 +26,28 @@ const routes: Routes = [
   },
   {
     path:'create',
-    component:CreateComponent
+    component:CreateComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'view',
-    component:ViewComponent
+    component:ViewComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'home1',
     component:Home1Component,
-    //canActivate:[AuthGuard]
+    canActivate:[AuthGuard]
   },
   {
     path:'details',
-    component:DetailsComponent
+    component:DetailsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'edit',
-    component:EditComponent
+    component:EditComponent,
+    canActivate:[AuthGuard]
   }
 ];
 
